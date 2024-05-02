@@ -59,8 +59,8 @@
 	}
 
 	.corner {
-		width: 50em;
 		height: 5em;
+		margin: 0 auto;
 	}
 
 	.corner a {
@@ -91,6 +91,10 @@
 		width: 2em;
 		height: 3em;
 		display: block;
+	}
+
+	svg:hover {
+		filter: invert(50%);
 	}
 
 	path {
