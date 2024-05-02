@@ -271,7 +271,7 @@
 		border: none;
 		font-size: calc(0.08 * var(--width));
 		border-radius: 2px;
-		background: white;
+		background: snow;
 		margin: 0;
 		color: rgba(0, 0, 0, 0.7);
 	}
@@ -319,7 +319,7 @@
 	.keyboard button,
 	.keyboard button:disabled {
 		--size: min(8vw, 4vh, 40px);
-		background-color: white;
+		background-color: snow;
 		color: black;
 		width: var(--size);
 		border: none;

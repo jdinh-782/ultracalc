@@ -51,7 +51,7 @@
 		font-size: 0.8em;
 		width: 2.4em;
 		height: 2.4em;
-		background-color: white;
+		background-color: snow;
 		box-sizing: border-box;
 		border-radius: 2px;
 		border-width: 2px;

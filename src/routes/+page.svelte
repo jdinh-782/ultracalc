@@ -1,7 +1,49 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import Typewriter from 'svelte-typewriter';
+
+	let displayMessages = [
+		"An easier way to perform calculations.",
+		"A simple, powerful solution to the world of calculators.",
+		"UltraCalc"
+	];
+
+	let inputGrid = [
+		['(', ')', '%', 'AC'],
+		['7', '8', '9', '÷'], 
+		['4', '5', '6', '×'],
+		['1', '2', '3', '-'],
+		['0', '.', '=', '+']
+	];
+
+	let currentInput = '0';
+	/**
+	 * @type {string[]}
+	 */
+	let storedInputs = [];
+
+	/**
+	 * @param {string} value
+	 */
+	// TODO: Add typing input functionality
+	function getInputValue(value) {
+		console.log(value);
+
+		if (value === 'AC') {
+			currentInput = '0';
+			storedInputs = [];
+			return;
+		}
+
+		if (currentInput === '=') {
+			calculate();
+			return;
+		}
+		currentInput += value;
+	}
+
+	function calculate() {
+		console.log(`storedInputs: ${storedInputs}`);
+	}
 </script>
 
 <svelte:head>
@@ -10,22 +52,39 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
+	<Typewriter mode="loopRandom">
+		{#each displayMessages as message}
+			<span class="display-message">{message}</span>
+		{/each}
+	</Typewriter>
+
+	<div class="calculator-container">
+		<span class="digit-input">{currentInput}</span>
+		
+		<span class="divider"></span>
+
+		<div class="inputs-grid">
+			{#each inputGrid as row}
+			<div class="row">
+				{#each row as cell}
+				<button class="cell" on:click={() => getInputValue(cell.toString())}>
+					<strong>{cell}</strong>
+				</button>
+				{/each}
+			</div>
+			{/each}
+		</div>
+
+	</div>
+
+	<a href="https://github.com/sveltejs/kit" target="_blank" class="view-calculators-link">
+		<span>
+			View Calculators
 		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+		<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}>
+			<path fill="currentColor" d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z" />
+		</svg>
+	</a>
 </section>
 
 <style>
@@ -35,25 +94,109 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+		gap: 25px;
+		font-family: monospace;
 	}
 
-	h1 {
+	.display-message {
+		font-size: 24px;
+		font-family: inherit;
+		color: black;
 		width: 100%;
 	}
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+	.calculator-container {
+		width: 75%;
+		background-color: snow;
+		border-radius: 25px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;
+
+		& .digit-input {
+			margin-left: auto;
+			font-size: 64px;
+			color: black;
+		}
+
+		& .inputs-grid {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 25px;
+			width: 100%;
+
+			& .row {
+				display: inline-flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 25px;
+				width: 100%;
+
+				& .cell {
+					font-size: 24px;
+					width: 100%;
+					border: 1px solid black;
+					border-radius: 25px;
+					text-align: center;
+					transition: background-color 0.2s linear;
+					background-color: snow;
+					padding: 10px;
+					color: var(--color-theme-1);
+				}
+
+				& .cell:hover {
+					cursor: pointer;
+					background-color: whitesmoke;
+				}
+
+				& .cell:focus {
+					background-color: silver;
+					visibility: hidden;
+					opacity: 0;
+					transition: visibility 0s 0.1s, opacity 0.5s linear;
+				}
+			}
+		}
 	}
 
-	.welcome img {
-		position: absolute;
+	.divider {
+		content: "";
+		color: black;
 		width: 100%;
-		height: 100%;
-		top: 0;
+		height: 25px;
+		border-top: 2px solid black;
+	}
+
+	.view-calculators-link {
+		margin-left: auto;
+		margin-right: 10%;
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		transition: color 0.2s linear;
+
+		& span {
+			font-size: 24px;
+		}
+	}
+
+	a:hover {
+		color: snow;
+		text-decoration: none;
+	}
+
+	svg {
+		width: 1.5em;
+		height: 2em;
 		display: block;
 	}
 </style>

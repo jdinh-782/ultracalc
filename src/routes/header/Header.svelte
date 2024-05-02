@@ -1,7 +1,6 @@
 <script>
 	import { page } from '$app/stores';
 	import MediaQuery from '../../assets/MediaQuery.svelte';
-	import Button from '../../assets/Button.svelte';
 </script>
 
 
@@ -67,9 +66,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
-		height: 100%;
 		text-decoration: none;
+		height: 100%;
 		transition: color 0.2s linear;
 
 		& span {
@@ -91,10 +89,6 @@
 		width: 2em;
 		height: 3em;
 		display: block;
-	}
-
-	svg:hover {
-		filter: invert(50%);
 	}
 
 	path {
