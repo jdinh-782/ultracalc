@@ -1,13 +1,13 @@
-<script>
+<script lang='ts'>
 	import Typewriter from 'svelte-typewriter';
 
-	let displayMessages = [
+	let displayMessages: Array<string> = [
 		"An easier way to perform calculations.",
 		"A simple, powerful solution to the world of calculators.",
 		"UltraCalc"
 	];
 
-	let inputGrid = [
+	let inputGrid: Array<Array<string>> = [
 		['(', ')', '%', 'AC'],
 		['7', '8', '9', '÷'], 
 		['4', '5', '6', '×'],
@@ -15,34 +15,48 @@
 		['0', '.', '=', '+']
 	];
 
-	let currentInput = '0';
-	/**
-	 * @type {string[]}
-	 */
-	let storedInputs = [];
+	let currentInput: string = '0';
 
-	/**
-	 * @param {string} value
-	 */
+	interface StoredCalculation {
+		expression: string,
+		result: string
+	};
+	let storedCalculations: Array<StoredCalculation> = [];
+
 	// TODO: Add typing input functionality
-	function getInputValue(value) {
-		console.log(value);
-
+	function getInputValue(value: string): void {
 		if (value === 'AC') {
 			currentInput = '0';
-			storedInputs = [];
 			return;
 		}
 
-		if (currentInput === '=') {
+		if (value === '=') {
 			calculate();
 			return;
 		}
-		currentInput += value;
+
+		if (currentInput === '0' && value !== '.') {
+			currentInput = '';
+		}
+		currentInput = currentInput.concat('', value);
 	}
 
-	function calculate() {
-		console.log(`storedInputs: ${storedInputs}`);
+	function calculate(): void {
+		try {
+			let finalInput = currentInput.replace('×', '*');
+			finalInput = finalInput.replace('÷', '/');
+
+			let result = eval(finalInput);
+
+			storedCalculations.push({
+				expression: currentInput.toString(),
+				result: result.toString()
+			});
+			currentInput = result.toString();
+		}
+		catch (e) {
+			alert(e);
+		}
 	}
 </script>
 
