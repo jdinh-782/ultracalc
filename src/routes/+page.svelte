@@ -2,8 +2,8 @@
 	import Typewriter from 'svelte-typewriter';
 
 	let displayMessages: Array<string> = [
-		"An easier way to perform calculations.",
 		"A simple, powerful solution to the world of calculators.",
+		"A faster, efficient way to perform calculations.",
 		"UltraCalc"
 	];
 
@@ -91,7 +91,7 @@
 
 	</div>
 
-	<a href="https://github.com/sveltejs/kit" target="_blank" class="view-calculators-link">
+	<a href="/" class="view-calculators-link">
 		<span>
 			View Calculators
 		</span>
@@ -114,9 +114,18 @@
 
 	.display-message {
 		font-size: 24px;
+		font-weight: 600;
 		font-family: inherit;
-		color: black;
+		color: var(--color-theme-3);
 		width: 100%;
+
+		@media (min-width: 480px) and (max-width: 768px) {
+			font-size: 16px;
+		}
+
+		@media (max-width: 480px) {
+			display: none;
+		}
 	}
 
 	.calculator-container {
@@ -128,11 +137,13 @@
 		justify-content: center;
 		align-items: center;
 		padding: 20px;
+		border: 4px solid var(--color-theme-1);
+		transition: box-shadow 0.2s linear;
 
 		& .digit-input {
 			margin-left: auto;
 			font-size: 64px;
-			color: black;
+			color: var(--color-theme-3);
 		}
 
 		& .inputs-grid {
@@ -154,13 +165,13 @@
 				& .cell {
 					font-size: 24px;
 					width: 100%;
-					border: 1px solid black;
+					border: 2px solid var(--color-theme-1);
 					border-radius: 25px;
 					text-align: center;
 					transition: background-color 0.2s linear;
 					background-color: snow;
 					padding: 10px;
-					color: var(--color-theme-1);
+					color: var(--color-theme-3);
 				}
 
 				& .cell:hover {
@@ -178,12 +189,16 @@
 		}
 	}
 
+	.calculator-container:hover {
+		box-shadow: 0px -5px 10px 0px var(--color-theme-1);
+	}
+
 	.divider {
 		content: "";
-		color: black;
+		color: var(--color-theme-3);
 		width: 100%;
 		height: 25px;
-		border-top: 2px solid black;
+		border-top: 2px solid var(--color-theme-3);
 	}
 
 	.view-calculators-link {

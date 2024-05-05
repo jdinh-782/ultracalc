@@ -6,14 +6,16 @@
 
 <header>
 	<div class="corner left">
-		<a href="https://kit.svelte.dev" target="_blank">
-			<MediaQuery mediaQuery="(max-width: 480px)" let:matches>
+		<a href="/">
+			<!-- TODO: Testing out custom MediaQuery class -->
+			<!-- <MediaQuery mediaQuery="(max-width: 480px)" let:matches>
 				{#if matches}
 					<span>U</span>
 				{:else}
 					<span>UltraCalc</span>
 				{/if}
-			</MediaQuery>
+			</MediaQuery> -->
+			<span>UltraCalc</span>
 		</a>
 	</div>
 
@@ -70,8 +72,22 @@
 		height: 100%;
 		transition: color 0.2s linear;
 
+		@media (max-width: 768px) {
+			margin-top: 25px;
+		}
+
 		& span {
 			font-size: 32px;
+
+			@media (max-width: 768px) {
+				font-size: 48px;
+			}
+		}
+	}
+
+	.right {
+		@media (max-width: 768px) {
+			display: none;
 		}
 	}
 
@@ -83,6 +99,10 @@
 		display: flex;
 		justify-content: center;
 		--background: rgba(255, 255, 255, 0.7);
+
+		@media (max-width: 768px) {
+			display: none;
+		}
 	}
 
 	svg {

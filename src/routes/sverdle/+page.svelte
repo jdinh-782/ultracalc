@@ -320,7 +320,7 @@
 	.keyboard button:disabled {
 		--size: min(8vw, 4vh, 40px);
 		background-color: snow;
-		color: black;
+		color: var(--color-theme-3);
 		width: var(--size);
 		border: none;
 		border-radius: 2px;
