@@ -144,6 +144,8 @@
 			margin-left: auto;
 			font-size: 64px;
 			color: var(--color-theme-3);
+			text-decoration: none;
+			user-select: none;
 		}
 
 		& .inputs-grid {
