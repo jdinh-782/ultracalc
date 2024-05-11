@@ -25,7 +25,7 @@
 
 	<Calculator></Calculator>
 
-	<a href="/" class="view-calculators-link">
+	<a href="/calculators" class="view-calculators-link">
 		<span>
 			View Calculators
 		</span>
