@@ -38,12 +38,12 @@
 
 <div class="categories-calculators-container">
 	<div class="search-bar">
-		<datalist id="calculators">
+		<datalist id="calculators_datalist">
 			{#each calculatorsList as calculator}
 				<option>{calculator}</option>
 			{/each}
 		</datalist>
-		<input autocomplete="on" list="calculators" class="search-calculators-input" />
+		<input autocomplete="on" list="calculators_datalist" class="search-calculators-input" id="search_calculators_input" />
 	</div>
 
 	<div class="categories-wrapper">
