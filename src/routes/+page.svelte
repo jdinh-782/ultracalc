@@ -9,10 +9,12 @@
 	];
 </script>
 
+
 <svelte:head>
 	<title>UltraCalc</title>
 	<meta name="description" content="UltraCalc" />
 </svelte:head>
+
 
 <section>
 	<Typewriter mode="loopRandom">
@@ -32,6 +34,7 @@
 		</svg>
 	</a>
 </section>
+
 
 <style>
 	section {

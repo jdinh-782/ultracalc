@@ -30,9 +30,13 @@
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
+			<li aria-current={$page.url.pathname === '/calculators' ? 'page' : undefined}>
+				<a href="/calculators">Calculators</a>
 			</li>
+			<!-- TODO: Sign up page -->
+			<!-- <li aria-current={$page.url.pathname.startsWith('/sign-up') ? 'page' : undefined}>
+				<a href="/sign-up">Sign Up</a>
+			</li> -->
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
@@ -40,13 +44,10 @@
 	</nav>
 
 	<div class="corner right">
-		<a href="https://github.com/sveltejs/kit" target="_blank" class="sign-up-link">
-			<span class="sign-up-text">
-				Sign Up
+		<a href="https://svelte.dev/">
+			<span>
+				Coming Soon
 			</span>
-			<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}>
-				<path fill="currentColor" d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z" />
-			</svg>
 		</a>
 	</div>
 </header>
