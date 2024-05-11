@@ -27,6 +27,18 @@
 	];
 
 	const calculatorsList = categoriesCalculatorsList.flatMap(obj => obj?.calculatorNames);
+
+	let searchInput: string = "";
+
+	function onInputSearch(event: any) {
+		const val = event?.target?.value;
+		searchInput = val;
+	}
+
+	function onClickSearchButton() {
+		// console.log(searchInput);
+		// TODO: Check search input value and navigate to corresponding calculator page
+	}
 </script>
 
 
@@ -38,12 +50,18 @@
 
 <div class="categories-calculators-container">
 	<div class="search-bar">
+		<button class="search-button" on:click={() => onClickSearchButton()}>
+			<svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#5f6368">
+				<path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+			</svg>
+		</button>
+
 		<datalist id="calculators_datalist">
 			{#each calculatorsList as calculator}
 				<option>{calculator}</option>
 			{/each}
 		</datalist>
-		<input autocomplete="on" list="calculators_datalist" class="search-calculators-input" id="search_calculators_input" />
+		<input autocomplete="on" list="calculators_datalist" class="search-calculators-input" placeholder="Search" id="search_calculators_input" on:input={($event) => onInputSearch($event)} />
 	</div>
 
 	<div class="categories-wrapper">
@@ -80,6 +98,21 @@
 		& .search-bar {
 			border: 2px solid black;
 			border-radius: 25px;
+			background: white;
+			display: inline-flex;
+			flex-direction: row;
+			align-items: center;
+			padding: 0.5rem;
+
+			& .search-button {
+				background: transparent;
+				border: none;
+				cursor: pointer;
+			}
+
+			& .search-button:hover {
+				filter: invert(50%);
+			}
 
 			& .search-calculators-input {
 				align-self: center;

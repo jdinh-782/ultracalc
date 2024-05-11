@@ -71,6 +71,12 @@
 			return;
 		}
 
+        if (value === '.') {
+            if (currentInput?.slice(-1) === '.') {
+                return;
+            }
+        }
+
 		if (currentInput === '0' && value !== '.') {
 			currentInput = '';
 		}
