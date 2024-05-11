@@ -1,38 +1,45 @@
 # UltraCalc
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+The all-in-one calculators app with calculators designed to solve daily problems.
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Setup
+
+Open up any terminal and run the following commands.
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
+# Clone the project in the current directory
+git clone https://github.com/jdinh-782/UltraCalc.git
 
-# create a new project in my-app
-npm create svelte@latest UltraCalc
+# Checkout to the develop branch for developing and testing
+git checkout develop
+
+# Receive the latest changes made to the branch
+git pull develop
+
+# Install the packages required to build and run the project
+npm install
 ```
+
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once the project has been set up, it is now time to begin developing!
 
 ```bash
+# Begin the local environment by executing the run command
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
 
-To create a production version of your app:
+## Contributing
 
-```bash
-npm run build
-```
+Please create a pull request and/or specify the issue you are hoping to solve so that administrators and developers can keep track. You can create a pull request [here](https://github.com/jdinh-782/UltraCalc/pulls).
 
-You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Author
+Johnson Dinh
+
+
+## License
+This project is licensed under the MIT License.
